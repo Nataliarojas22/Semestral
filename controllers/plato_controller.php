@@ -7,6 +7,22 @@
 
     class plato_controller {
 
+        public static function test_mostrar() {
+            //pendiente de revisar
+            if (!isset($_SESSION["id_usuario"])) {
+                header("location: index.php?c=".seg::codificar("principal")."&m=".seg::codificar("mensaje")."&msg=Se te ha impedido el acceso. Debes iniciar sesión para continuar.");
+                exit();
+            }
+
+            if (isset($_GET["msg"])) $msg=$_GET["msg"];
+
+            require_once("views/template/header.php");
+            require_once("views/template/navbar.php");
+            require_once("views/template/header2.php.");
+            require_once("views/platos/crud_platos.php");
+            require_once("views/template/footer.php");
+        }
+
         public static function mostrar() {
             //pendiente de revisar
             if (!isset($_SESSION["id_usuario"])) {
@@ -21,10 +37,10 @@
             $resultado = $obj->mostrar_platos();
 
             require_once("views/template/header.php");
-            require_once("views/template/navbar.php.php");
-            require_once("views/template/header2.php.php");
-            //require_once("views/plato/mostrar.php");
-            require_once("views/template/footer.php.php");
+            require_once("views/template/navbar.php");
+            require_once("views/template/header2.php.");
+            require_once("views/platos/crud_platos.php");
+            require_once("views/template/footer.php");
         }
 
         public static function registro($erro=[], $nombre="", $descripcion="", $precio="") {
@@ -45,7 +61,7 @@
             require_once("views/template/header.php");
             require_once("views/template/navbar.php.php");
             require_once("views/template/header2.php.php");
-            //require_once("views/plato/registro.php");
+            require_once("views/platos/crud_platos.php");
             require_once("views/template/footer.php.php");
         }
 
@@ -66,7 +82,7 @@
                 empty($_POST(["txtPrecio"]))?$error[2]="Este campo es obligatorio":$precio=$_POST["txtPrecio"];
                 ($_FILES["txtFoto"]["size"] == 0)?$error[3]="Este campo es obligatorio":"";
 
-                $id_categoria = $_POST["lstCategoria"];
+                $id_categoria = $_POST["categoria"];
 
                 if (isset($error)) {
                     plato_controller::registro($error, $nombre, $descripcion, $precio);
@@ -84,17 +100,16 @@
                     $obj->setDescripcion_plato($descripcion);
                     $obj->setPrecio_plato($precio);
                     $obj->setFoto_plato($foto);
-                    $obj->setNombre_plato($nombre);
                     $obj->set_id_categoria($id_categoria);
                     $obj->set_id_usuario($_SESSION["id_usuario"]);
                     
                     //pendiente de revisar
                     $resultado = $obj->insertar();
                     if (isset($resultado)) {
-                        //header("location: index.php?c=".seg::codificar("plato")."&m=".seg::codificar("mostrar")."&msg=El plato ha sido registrado con exito");
+                        header("location: index.php?c=".seg::codificar("plato")."&m=".seg::codificar("mostrar")."&msg=El plato ha sido registrado con exito");
 
                     } else {
-                        //header("location: index.php?c=".seg::codificar("principal")."&m=".seg::codificar("mensaje")."&msg=Algo ha fallado. Intentalo nuevamente");
+                        header("location: index.php?c=".seg::codificar("plato")."&m=".seg::codificar("mostrar")."&msg=Algo ha fallado. Intentalo nuevamente");
                     }
                 }
             }
@@ -109,10 +124,10 @@
             $resultado = $obj->eliminar();
 
             if ($resultado > 0) {
-                //header("location: index.php?c=".seg::codificar("principal")."&m=".seg::codificar("mensaje")."&msg=El plato ha sido eliminado con exito");
+                header("location: index.php?c=".seg::codificar("principal")."&m=".seg::codificar("mensaje")."&msg=El plato ha sido eliminado con exito");
 
             } else {
-                //header("location: index.php?c=".seg::codificar("principal")."&m=".seg::codificar("mensaje")."&msg=Algo ha fallado. Intentalo nuevamente");
+                header("location: index.php?c=".seg::codificar("principal")."&m=".seg::codificar("mensaje")."&msg=Algo ha fallado. Intentalo nuevamente");
             }
             
         }

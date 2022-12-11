@@ -36,7 +36,7 @@
                                 <form action="<?php echo "index.php?c=" . seg::codificar("suscripcion") . "&m=" . seg::codificar("registrar") ?>" class="ftco-footer-newsletter" method="POST">
                                     <div class="form-group">
                                         <button class="button"><span class="fa fa-envelope"></span></button>
-                                        <input type="email" class="form-control" placeholder="Ingresa tu correo" name="txtCorreo" required="">
+                                        <input type="email" class="form-control" placeholder="Ingresa tu correo" name="txtCorreo">
                                         <input type="hidden" name="token" value="<?php echo seg::getToken() ?>">
                                     </div>
                                 </form>
@@ -76,6 +76,9 @@
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 
+        <script src="https://kit.fontawesome.com/c1af241dae.js" crossorigin="anonymous"></script>
         <script src="js/main.js"></script>
+
+        
     </body>
 </html>

@@ -5,9 +5,9 @@
                 <div class="row align-items-center justify-content-center text-center">
                     <div class="col-md-10" data-aos="fade-up">
                         <h2 class="heading mb-5">Bienvenido a Scratt, donde los platos hablan por si mismos.</h2>
-                        <p class="sub-heading mb-5">Diseña, crea y vende tus platillos favoritos. <a href="<?php echo "index.php?c=".seg::codificar("usuario")."&m=".seg::codificar("registro") ?>"><strong>Registrate</strong></a></p>
-                        <p><a href="<?php echo "index.php?c=".seg::codificar("usuario")."&m=".seg::codificar("login") ?>" class="smoothscroll btn btn-outline-white px-5 py-3">Inicia sesión</a></p>
-                        <p><a href="<?php echo "index.php?c=".seg::codificar("principal")."&m=".seg::codificar("show_panel_user_0") ?>" class="smoothscroll btn btn-outline-white px-5 py-3">Inicia sesión - Test Anthony</a></p>
+                        <p class="sub-heading mb-5">Diseña, crea y vende tus platillos favoritos. <a href="<?php echo "index.php?c=" . seg::codificar("usuario") . "&m=" . seg::codificar("registro") ?>"><strong>Registrate</strong></a></p>
+                        <p><a href="<?php echo "index.php?c=" . seg::codificar("usuario") . "&m=" . seg::codificar("login") ?>" class="smoothscroll btn btn-outline-white px-5 py-3">Inicia sesión</a></p>
+                        <!-- <p><a href="<?php echo "index.php?c=" . seg::codificar("categoria_plato") . "&m=" . seg::codificar("test_mostrar") ?>" class="smoothscroll btn btn-outline-white px-5 py-3">Test anthony</a></p> -->
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
             <div class="row section-heading justify-content-center mb-5">
                 <div class="col-md-8 text-center">
                     <h2 class="heading mb-3">Muestra tus mejores comidas</h2>
-                    <p class="sub-heading mb-5">Provee de una gran variedad de categorias para tus clientes. <a href="<?php echo "index.php?c=".seg::codificar("usuario")."&m=".seg::codificar("registro") ?>">Registrate</a></p>
+                    <p class="sub-heading mb-5">Provee de una gran variedad de categorias para tus clientes. <a href="<?php echo "index.php?c=" . seg::codificar("usuario") . "&m=" . seg::codificar("registro") ?>">Registrate</a></p>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
 
             </div>
         </div>
-    </div> 
+    </div>
 
     <div class="section pb-3 bg-white" id="section-about" data-aos="fade-up">
         <div class="container">
@@ -68,18 +68,18 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
     <div class="section bg-white pt-2 pb-2 text-center" data-aos="fade">
         <p><img src="images/bg_hero.png" alt="Free Website Template for Restaurants by Free-Template.co" class="img-fluid"></p>
-    </div> 
+    </div>
 
     <div class="section bg-white services-section" data-aos="fade-up">
         <div class="container">
             <div class="row section-heading justify-content-center mb-5">
                 <div class="col-md-8 text-center">
                     <h2 class="heading mb-3">Otros beneficios</h2>
-                    <p class="sub-heading mb-5">Administra, modifica y visualiza tus creaciones. <a href="<?php echo "index.php?c=".seg::codificar("usuario")."&m=".seg::codificar("registro") ?>">Registrate</a></p>
+                    <p class="sub-heading mb-5">Administra, modifica y visualiza tus creaciones. <a href="<?php echo "index.php?c=" . seg::codificar("usuario") . "&m=" . seg::codificar("registro") ?>">Registrate</a></p>
                 </div>
             </div>
             <div class="row">
@@ -141,8 +141,8 @@
                     </div>
                 </div>
             </div>
-        </div> 
-    
+        </div>
+
     <?php } elseif ($_SESSION["monto_pago"] == 0) { ?>
         <div class="section bg-white" data-aos="fade-up">
             <div class="container">
@@ -180,21 +180,11 @@
                     </div>
                 </div>
             </div>
-        </div> 
-
-    <?php } else { ?>
-        <div class="cover_1 overlay bg-slant-white bg-light">
-            <div class="img_bg" style="background-image: url(images/slider-1.jpg);" data-stellar-background-ratio="0.5">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center text-center">
-                        <div class="col-md-10" data-aos="fade-up">
-                            <h2 class="heading mb-5">Titulo</h2>
-                            <p class="sub-heading mb-5">Contenido <a href="<?php echo "index.php?c=".seg::codificar("")."&m=".seg::codificar("") ?>"><strong>Botón 1</strong></a></p>
-                            <p><a href="<?php echo "index.php?c=".seg::codificar("")."&m=".seg::codificar("") ?>" class="smoothscroll btn btn-outline-white px-5 py-3">Botón 2</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    <?php } ?>
-<?php } ?>
+
+    <?php } elseif ($_SESSION["monto_pago"] == 0) { 
+        require_once "views/template/header_0_options.php";
+        } else{
+
+        }
+    }?>
